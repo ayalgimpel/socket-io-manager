@@ -1,7 +1,7 @@
 const redis = require('redis');
 const config = require('config');
 const redisConfig = config.get('redis');
-const subscriber = redis.createClient({ host: ' 0.0.0.0', port: '6379' });
+const subscriber = redis.createClient(redisConfig.port || 6379, redisConfig.host || '127.0.0.1');
 const socketManager = require('./socket-manager');
 const EventTypes = require('../src/event-types');
 const logger = require('./core/logger');
